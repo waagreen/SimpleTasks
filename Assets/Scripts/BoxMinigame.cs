@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class BoxMinigame : MonoBehaviour
 {
+    private string id => this.name;
     public ToyPickerUI hud;
     public Transform container;
     
@@ -27,7 +28,7 @@ public class BoxMinigame : MonoBehaviour
         boxCount = 0;
         OnAnimDone.AddListener(() => Tdestroy(toy));
         OnMinigameDone.AddListener(SpawnHud);
-        Core.Binds.OnInteract.AddListener(() => OpenChest(lid));
+        Core.Binds.OnInteract.AddListener((id) => OpenChest(lid, id));
     }
     private void OnTriggerEnter(Collider boxedObject)
     {
@@ -48,13 +49,15 @@ public class BoxMinigame : MonoBehaviour
         OnAnimDone.RemoveAllListeners();
         OnMinigameDone.RemoveAllListeners();
     }
-    public void OpenChest(Transform t)
+    public void OpenChest(Transform t, string id)
     {
-        var tween = DOTween.Sequence();
+        if(id == this.id)
+        {
+            var tween = DOTween.Sequence();
 
-        
-        tween.Append(t.DORotateQuaternion(endP.rotation, 1f).SetEase(Ease.InSine));
-        tween.Play();
+            tween.Append(t.DORotateQuaternion(endP.rotation, 1f).SetEase(Ease.InSine));
+            tween.Play();
+        }
     }
     private void SpawnHud() => Instantiate(hud, container);
     private void FadeToy(float timeToFade, Material material) => material.DOFade(0f, timeToFade).SetEase(Ease.OutQuint).OnComplete(OnAnimDone.Invoke);

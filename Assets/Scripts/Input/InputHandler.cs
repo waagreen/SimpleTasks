@@ -16,11 +16,12 @@ public class InputHandler : MonoBehaviour
     public InputActionReference mZero;
     public InputActionReference mFollow;
 
-    public UnityEvent OnInteract = new UnityEvent();
+    public UnityEvent<string> OnInteract = new UnityEvent<string>();
 
     private GameObject selectedObject;
     private GameObject playerHands;
     private GameObject currentTarget;
+    private RaycastHit hit;
 
     public TMP_Text objName;
 
@@ -28,6 +29,7 @@ public class InputHandler : MonoBehaviour
     {
         selectedObject = Core.Data.selectedObject;
         playerHands = Core.Data.playerHands;
+        hit = Core.Data.hit;
 
         baseMove = new BaseMovement();
 
@@ -47,13 +49,13 @@ public class InputHandler : MonoBehaviour
 
         Core.Data.ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
         
-        if(Physics.Raycast(Core.Data.ray, out Core.Data.hit, Core.Data.contactDistance) && Core.Data.hit.transform.tag == "PickUp")
+        if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "PickUp")
         {
-            var target = Core.Data.hit.transform.gameObject;
+            var target = hit.transform.gameObject;
             if(currentTarget != target)
             {
                 objName.gameObject.SetActive(true);
-                objName.SetText(Core.Data.hit.transform.gameObject.name);
+                objName.SetText(hit.transform.gameObject.name);
                 currentTarget = target;
                 currentTarget.layer = LayerMask.NameToLayer("Highlight");
             }
@@ -70,8 +72,8 @@ public class InputHandler : MonoBehaviour
         context.ReadValueAsButton();
 
         if (Core.Data.second == 3) Core.Data.isHolding = false;
-        else if(Physics.Raycast(Core.Data.ray, out Core.Data.hit, Core.Data.contactDistance) && Core.Data.hit.transform.tag == "PickUp") Core.Data.isHolding = true;
-        else if(Physics.Raycast(Core.Data.ray, out Core.Data.hit, Core.Data.contactDistance) && Core.Data.hit.transform.tag == "Interactible") OnInteract.Invoke();
+        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "PickUp") Core.Data.isHolding = true;
+        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "Interactible") Action(hit.transform.name);
     }
     public void PullComfortObject(InputAction.CallbackContext context)
     {
@@ -87,9 +89,9 @@ public class InputHandler : MonoBehaviour
     }
     public void PickUpAction()
     {
-        Debug.Log($"you picked a {Core.Data.hit.transform.name}");
-        selectedObject = Core.Data.hit.transform.gameObject;
-        toggleRigidBody(false, Core.Data.hit.rigidbody);
+        Debug.Log($"you picked a {hit.transform.name}");
+        selectedObject = hit.transform.gameObject;
+        toggleRigidBody(false, hit.rigidbody);
         selectedObject.transform.position = playerHands.transform.position;
         selectedObject.transform.SetParent(playerHands.transform);
     }
@@ -102,7 +104,8 @@ public class InputHandler : MonoBehaviour
         pickedRb.AddForce(playerHands.transform.forward * 5f, ForceMode.Impulse);
         pickedRb.drag = 0.5f;
     }
-    
+
+    private void Action(string id) => OnInteract.Invoke(id);
     private void OnEnable() => baseMove.Enable();
     
     private void OnDisable()
