@@ -37,6 +37,8 @@ public class InputHandler : MonoBehaviour
         baseMove.KeyboardMouse.PickUp.started += Interaction;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        baseMove.KeyboardMouse.DebugButton.started += DebugButton;
+
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -106,14 +108,24 @@ public class InputHandler : MonoBehaviour
     }
 
     private void Action(string id) => OnInteract.Invoke(id);
+
+    public void DebugButton(InputAction.CallbackContext context)
+    {
+        context.ReadValueAsButton();
+        Instantiate(Core.UI.gridTest);
+    }
+
+
     private void OnEnable() => baseMove.Enable();
     
     private void OnDisable()
     {
+        baseMove.KeyboardMouse.DebugButton.started -= DebugButton;
         baseMove.KeyboardMouse.ComfortObject.started -= PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started -= Interaction;
         OnInteract.RemoveAllListeners();
         baseMove.Disable();
     }
+
 }
 

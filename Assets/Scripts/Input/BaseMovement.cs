@@ -80,6 +80,15 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DebugButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""63f41c65-b096-4c71-9c02-f74d74eee5ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                     ""action"": ""None"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37229bbb-f1dc-489e-91be-5886e5002477"",
+                    ""path"": ""<Keyboard>/minus"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +248,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         m_KeyboardMouse_ComfortObject = m_KeyboardMouse.FindAction("ComfortObject", throwIfNotFound: true);
         m_KeyboardMouse_PickUp = m_KeyboardMouse.FindAction("PickUp", throwIfNotFound: true);
         m_KeyboardMouse_None = m_KeyboardMouse.FindAction("None", throwIfNotFound: true);
+        m_KeyboardMouse_DebugButton = m_KeyboardMouse.FindAction("DebugButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMouse_ComfortObject;
     private readonly InputAction m_KeyboardMouse_PickUp;
     private readonly InputAction m_KeyboardMouse_None;
+    private readonly InputAction m_KeyboardMouse_DebugButton;
     public struct KeyboardMouseActions
     {
         private @BaseMovement m_Wrapper;
@@ -303,6 +325,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         public InputAction @ComfortObject => m_Wrapper.m_KeyboardMouse_ComfortObject;
         public InputAction @PickUp => m_Wrapper.m_KeyboardMouse_PickUp;
         public InputAction @None => m_Wrapper.m_KeyboardMouse_None;
+        public InputAction @DebugButton => m_Wrapper.m_KeyboardMouse_DebugButton;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +353,9 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                 @None.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnNone;
                 @None.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnNone;
                 @None.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnNone;
+                @DebugButton.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
+                @DebugButton.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
+                @DebugButton.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
             }
             m_Wrapper.m_KeyboardMouseActionsCallbackInterface = instance;
             if (instance != null)
@@ -352,6 +378,9 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                 @None.started += instance.OnNone;
                 @None.performed += instance.OnNone;
                 @None.canceled += instance.OnNone;
+                @DebugButton.started += instance.OnDebugButton;
+                @DebugButton.performed += instance.OnDebugButton;
+                @DebugButton.canceled += instance.OnDebugButton;
             }
         }
     }
@@ -364,5 +393,6 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         void OnComfortObject(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnNone(InputAction.CallbackContext context);
+        void OnDebugButton(InputAction.CallbackContext context);
     }
 }

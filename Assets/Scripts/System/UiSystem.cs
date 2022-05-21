@@ -7,12 +7,15 @@ using TMPro;
 
 public class UiSystem : MonoBehaviour
 {
+    public GameObject gridTest;
+    
     [HideInInspector] public StressBar activeBar;
     [HideInInspector] public List<GameObject> points = new List<GameObject>();
-    [SerializeField] private Transform barHolder;
+    [SerializeField] public Transform barHolder;
     public StressBar stress;
     public PointBehaviour point;
     public UnityEvent OnMiniGameEnd = new UnityEvent();
+
 
     private bool isStressed = false;
 
