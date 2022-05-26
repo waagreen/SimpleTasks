@@ -112,7 +112,7 @@ public class InputHandler : MonoBehaviour
     public void DebugButton(InputAction.CallbackContext context)
     {
         context.ReadValueAsButton();
-        Instantiate(Core.UI.gridTest);
+        Instantiate(Core.UI.gridTest, Core.UI.barHolder);
     }
 
 

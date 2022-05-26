@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FridgeManager : MonoBehaviour
-{
+{   
+    public int gridNum;
+    public GameObject grid;
+    public RectTransform container;
+    public List<Vector2> coordinates;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() 
     {
-        
+        SetupMinigame();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetupMinigame()
     {
-        
+        for(int i = 0; i < gridNum; i++)
+        {
+            Instantiate(grid, container);
+        }
     }
 }

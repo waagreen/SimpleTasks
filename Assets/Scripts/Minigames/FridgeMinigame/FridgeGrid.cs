@@ -4,53 +4,24 @@ using UnityEngine;
 
 public class FridgeGrid : MonoBehaviour
 {
-    //Gameobject da célula da geladeira
+    //Gameobject da cï¿½lula da geladeira
     public GameObject cellGrid;
-    private int[,] gridCord;
-    private float width => this.width;
-    private float height => this.height;
-    
+    public RectTransform par;
+    public RectTransform container;
+    private float[,] gridCord;
+
+    private float width, height;
+
     [Header("Grid Specs")]
-    public int columnNumber;
-    public int rowNumber;
+    public int cellNum;
     
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        CreateGrid(rowNumber,columnNumber);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void CreateGrid(int gridSizeX, int gridSizeY)
-    {
-        
-
-        for(int i = 0; i < columnNumber; i++)
+        for(int i = 0; i < cellNum; i++)
         {
-            for(int j = 0; j < rowNumber; j++)
-            {
-                gridCord = new int [gridSizeX, gridSizeY];
-                CreateCell(i,j);
-            }
+            var grid = Instantiate(cellGrid, container);
         }
 
-
     }
-
-    private void CreateCell(int x, int y)
-    {
-        var grid = Instantiate(cellGrid,Core.UI.barHolder);
-        grid.transform.position = new Vector3(x - (width - .5f), y - (height - .5f));
-
-    }
-
 }

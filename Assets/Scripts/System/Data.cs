@@ -23,7 +23,7 @@ public class Data : MonoBehaviour
 
 
     [Header("Interaction Variables")]
-    public float contactDistance = 10f;
+    public float contactDistance = 12f;
     public GameObject playerHands;
     public bool isHolding = false;
     public bool isComforting = false;
