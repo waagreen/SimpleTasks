@@ -10,7 +10,8 @@ public class InputHandler : MonoBehaviour
 {
     [HideInInspector] public BaseMovement baseMove;
     [HideInInspector] public bool IsMovePressed;
-    public Vector3 mPos { get; private set; }
+    public Vector2 mPos { get; private set; }
+    public Vector2 mTest;
     public Vector3 mInput { get; private set; }
     public Cinemachine.CinemachineInputProvider mLook;
     public InputActionReference mZero;
@@ -35,8 +36,6 @@ public class InputHandler : MonoBehaviour
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         baseMove.KeyboardMouse.DebugButton.started += DebugButton;
 
     }

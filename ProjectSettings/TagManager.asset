@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - PickUp
   - Interactible
+  - MainCanvas
   layers:
   - Default
   - TransparentFX
