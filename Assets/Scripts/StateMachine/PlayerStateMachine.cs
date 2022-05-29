@@ -10,7 +10,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     public CharacterController controller;
     public Camera mCam;
-
     private Vector3 move;
 
     //getters setters
@@ -38,6 +37,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Update()
     {
+   
         Gravity();
         cState.UpdateStates();
     }
