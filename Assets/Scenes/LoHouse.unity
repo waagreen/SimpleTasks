@@ -7222,6 +7222,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 545339833}
   buttons: {fileID: 875310402}
   optinons: {fileID: 1126009617}
+  isPaused: 0
 --- !u!1 &1382031133
 GameObject:
   m_ObjectHideFlags: 0
@@ -11735,7 +11736,7 @@ Canvas:
   m_GameObject: {fileID: 1912623096}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 963194227}
   m_PlaneDistance: 3
   m_PixelPerfect: 1
@@ -12610,6 +12611,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 923187415736443674, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 923187415736443674, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 923187415736443674, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 923187415736443675, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12693,6 +12706,10 @@ PrefabInstance:
     - target: {fileID: 923187415736443675, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 923187415736443677, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 923187415830317778, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

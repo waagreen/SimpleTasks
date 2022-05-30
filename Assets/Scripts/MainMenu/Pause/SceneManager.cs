@@ -8,7 +8,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optinons;
-    [HideInInspector] public static bool isPaused = false;
+    [HideInInspector] public bool isPaused = false;
+    
 
     void Update()
     {
