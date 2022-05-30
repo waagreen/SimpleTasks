@@ -9,6 +9,7 @@ public class PlayerMovingState : PlayerBaseState
     public override void EnterState()
     {
         InitializeSubState();
+        _contex.playerAudioSource.Play();
     }
     public override void UpdateState() 
     {
@@ -17,7 +18,7 @@ public class PlayerMovingState : PlayerBaseState
     }
     public override void ExitState()
     {
-
+        _contex.playerAudioSource.Stop();
     }
     public override void CheckSwitchStates()
     {

@@ -7,6 +7,8 @@ public class PlayerStateMachine : MonoBehaviour
     [HideInInspector] public PlayerBaseState cState;
     [HideInInspector] public PlayerStateFactory fState;
     [SerializeField] private Transform player;
+    public AudioSource playerAudioSource;
+    
 
     public CharacterController controller;
     public Camera mCam;
@@ -28,6 +30,7 @@ public class PlayerStateMachine : MonoBehaviour
     //personagem sempre inicia no IDLE STATE
     public void Awake()
     {
+
         move = Core.Data.move;
 
         Core.Data.stressLevel = 4;
