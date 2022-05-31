@@ -8,6 +8,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optinons;
+    [SerializeField] GameObject pauseText;
+    [SerializeField] GameObject optionsScreen;
+
     [HideInInspector] public bool isPaused = false;
     
 
@@ -30,5 +33,17 @@ public class SceneManager : MonoBehaviour
         Time.timeScale = 1f;
         Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
         isPaused = false;
+    }
+
+    public void SettingsGame(){
+        pauseText.SetActive(false);
+        buttons.SetActive(false);
+        optionsScreen.SetActive(true);
+    }
+
+    public void BackToMenu(){
+        optionsScreen.SetActive(false);
+        pauseText.SetActive(true);
+        buttons.SetActive(true);
     }
 }
