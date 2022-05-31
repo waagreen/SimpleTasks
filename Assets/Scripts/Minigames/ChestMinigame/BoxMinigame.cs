@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 
-public class BoxMinigame : MonoBehaviour
+public class BoxMinigame : InteractibleObject
 {
-    private string id => this.name;
+    public override string id => this.name;
     public ToyPickerUI hud;
     public Transform container;
     

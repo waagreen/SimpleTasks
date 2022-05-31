@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class FridgeGrid : MonoBehaviour
+public class Grid : MonoBehaviour
 {
     //Gameobject da c�lula da geladeira
     public GameObject cellGrid;

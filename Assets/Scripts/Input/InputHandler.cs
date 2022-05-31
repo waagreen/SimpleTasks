@@ -34,10 +34,12 @@ public class InputHandler : MonoBehaviour
 
         baseMove = new BaseMovement();
 
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
         baseMove.KeyboardMouse.DebugButton.started += DebugButton;
-
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {

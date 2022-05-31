@@ -9,6 +9,7 @@ TagManager:
   - PickUp
   - Interactible
   - MainCanvas
+  - Piece
   layers:
   - Default
   - TransparentFX

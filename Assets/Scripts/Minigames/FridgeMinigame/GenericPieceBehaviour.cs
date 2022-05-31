@@ -9,18 +9,18 @@ using UnityEngine.UI;
 public class GenericPieceBehaviour : MonoBehaviour
 {
     public Canvas ui_canvas;
-    GraphicRaycaster ui_raycaster;
-    PointerEventData click_data;
-    List<RaycastResult> click_results;
+
+    private RectTransform element_rect;
+    private GraphicRaycaster ui_raycaster;
+    private PointerEventData click_data;
+    private List<RaycastResult> click_results;
+    private bool dragging = false;
+    private GameObject drag_element;
  
-    List<GameObject> clicked_elements;
+    private List<GameObject> clicked_elements;
  
-    bool dragging = false;
-    bool isHolding = false;
-    GameObject drag_element;
- 
-    Vector2 mouse_position;
-    Vector2 previous_mouse_position;
+    private Vector2 mouse_position;
+    private Vector2 previous_mouse_position;
 
     private void Awake() 
     {
@@ -90,17 +90,18 @@ public class GenericPieceBehaviour : MonoBehaviour
         {
             clicked_elements.Add(result.gameObject);
         }
- 
     }
  
     void DragElement()
     {
         /** Drag a UI element across the screen based on the mouse movement. **/
+        if(drag_element != null && drag_element.tag == "Piece")
+        {
+            element_rect = drag_element.GetComponent<RectTransform>();
  
-        RectTransform element_rect = drag_element.GetComponent<RectTransform>();
- 
-        Vector2 drag_movement = mouse_position - previous_mouse_position;
-        element_rect.anchoredPosition = element_rect.anchoredPosition + drag_movement;
+            Vector2 drag_movement = mouse_position - previous_mouse_position;
+            element_rect.anchoredPosition = element_rect.anchoredPosition + drag_movement;
+        }
     }
  
 }

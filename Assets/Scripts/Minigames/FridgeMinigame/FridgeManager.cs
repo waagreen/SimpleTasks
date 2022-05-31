@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FridgeManager : MonoBehaviour
-{   
-    public int gridNum;
-    public GameObject grid;
-    public RectTransform container;
-    public List<Vector2> coordinates;
+public class FridgeManager : InteractibleObject
+{
+    public override string id => this.name;
 
-    private void Awake() 
+    public GameObject fridgeUI;
+    public RectTransform holder;
+
+    private bool doing = false;
+
+    private void Awake()
     {
-        SetupMinigame();
+        Core.Binds.OnInteract.AddListener((id) => StartMiniGame(id));
     }
 
-    private void SetupMinigame()
+    public void StartMiniGame(string id)
     {
-        for(int i = 0; i < gridNum; i++)
+        if(id == this.id && !doing)
         {
-            Instantiate(grid, container);
+            doing = true;
+            Instantiate(fridgeUI, holder);
+            Core.Data.isInteracting = true;
         }
     }
 }
