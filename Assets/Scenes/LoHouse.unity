@@ -5923,6 +5923,7 @@ MonoBehaviour:
   optinons: {fileID: 1126009617}
   pauseText: {fileID: 2067020553}
   optionsScreen: {fileID: 884113040}
+  volume: {fileID: 963194230}
   isPaused: 0
 --- !u!1 &1410690631
 GameObject:
