@@ -34,8 +34,8 @@ public class InputHandler : MonoBehaviour
 
         baseMove = new BaseMovement();
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
@@ -75,8 +75,8 @@ public class InputHandler : MonoBehaviour
         context.ReadValueAsButton();
 
         if (Core.Data.second == 3) Core.Data.isHolding = false;
-        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "PickUp") Core.Data.isHolding = true;
-        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "Interactible") Action(hit.transform.name);
+        else if(Physics.Raycast(Core.Data.ray, out hit, 1.5f * Core.Data.contactDistance) && hit.transform.tag == "PickUp") Core.Data.isHolding = true;
+        else if(Physics.Raycast(Core.Data.ray, out hit, 1.5f * Core.Data.contactDistance) && hit.transform.tag == "Interactible") Action(hit.transform.name);
     }
     public void PullComfortObject(InputAction.CallbackContext context)
     {
@@ -92,7 +92,7 @@ public class InputHandler : MonoBehaviour
     }
     public void PickUpAction()
     {
-        Debug.Log($"you picked a {hit.transform.name}");
+        //Debug.Log($"you picked a {hit.transform.name}");
         selectedObject = hit.transform.gameObject;
         toggleRigidBody(false, hit.rigidbody);
         selectedObject.transform.position = playerHands.transform.position;
@@ -101,7 +101,7 @@ public class InputHandler : MonoBehaviour
     public void DropAction()
     {
         var pickedRb = selectedObject.GetComponent<Rigidbody>();
-        Debug.Log($"You dropped a {selectedObject.transform.name}");
+        //Debug.Log($"You dropped a {selectedObject.transform.name}");
         selectedObject.transform.SetParent(null);
         toggleRigidBody(true, pickedRb);
         pickedRb.AddForce(playerHands.transform.forward * 5f, ForceMode.Impulse);
