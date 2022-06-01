@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
-{
+{   
+    public Animator transition;
+    public float transitionDuration;
+
+    [Header("Menu Buttons")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optinons;
@@ -12,6 +16,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject optionsScreen;
     [SerializeField] AudioSource volume;
     [HideInInspector] public bool isPaused = false;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P)){
@@ -46,5 +51,15 @@ public class SceneLoader : MonoBehaviour
         optionsScreen.SetActive(false);
         pauseText.SetActive(true);
         buttons.SetActive(true);
+    }
+
+    public void CrossFade() => StartCoroutine(LoadLevel());
+    IEnumerator LoadLevel() 
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionDuration);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
