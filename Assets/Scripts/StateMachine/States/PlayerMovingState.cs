@@ -18,7 +18,7 @@ public class PlayerMovingState : PlayerBaseState
     }
     public override void ExitState()
     {
-        _contex.playerAudioSource.Stop();
+       _contex.playerAudioSource.Stop();
     }
     public override void CheckSwitchStates()
     {
