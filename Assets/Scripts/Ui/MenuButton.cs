@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuButton : MonoBehaviour
-{
+{   
     public Animator anim;
     private bool isIdle = false;
+    
 
     public void EnableAnima()
     {
