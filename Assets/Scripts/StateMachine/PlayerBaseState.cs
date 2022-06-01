@@ -6,6 +6,7 @@ public abstract class PlayerBaseState
     protected PlayerBaseState _currentSuperState;
     protected PlayerBaseState _currentSubState;
 
+    
     public PlayerBaseState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     {
         _contex = currentContext;

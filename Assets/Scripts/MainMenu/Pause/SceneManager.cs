@@ -10,10 +10,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] GameObject optinons;
     [SerializeField] GameObject pauseText;
     [SerializeField] GameObject optionsScreen;
-
+    [SerializeField] AudioSource volume;
     [HideInInspector] public bool isPaused = false;
-    
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P)){
@@ -26,12 +24,15 @@ public class SceneManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f; //stop animations, updates 
         Core.Binds.mLook.XYAxis = Core.Binds.mZero;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         isPaused = true;
     }
     public void ResumeGame(){
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
+        Cursor.visible = false;
         isPaused = false;
     }
 
