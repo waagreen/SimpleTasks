@@ -9,7 +9,8 @@ public class CellBehaviour : MonoBehaviour, IDropHandler
 
     public GameObject item
     {
-        get {
+        get 
+        {
             if(transform.childCount > 0)
             {
                 return transform.GetChild(0).gameObject;
@@ -21,5 +22,6 @@ public class CellBehaviour : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         if(!item && !isOccupied) DragAndDropController.itemBeingDragged.transform.SetParent(transform);
+        transform.parent.GetComponent<Grid>().IsComplete();
     }
 }

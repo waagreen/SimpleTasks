@@ -9,11 +9,6 @@ public class FridgeUI : MonoBehaviour
     public RectTransform container;
     public List<Vector2> coordinates;
 
-    private void Awake() 
-    {
-        container.gameObject.SetActive(true);
-    }
-
     private void SetupMinigame()
     {
         for(int i = 0; i < gridNum; i++)

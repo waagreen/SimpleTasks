@@ -8,14 +8,35 @@ public class Grid : MonoBehaviour
     //Gameobject da c�lula da geladeira
     public GameObject cellGrid;
     public RectTransform container;
-
     public bool isDone = false;
-    private int maxCount;
-    [SerializeField] private int totalSum;
+
 
     [Header("Grid Specs")]
-    public int cellNum;
     public List<CellBehaviour> cellList;
     
+    private void Awake() {
+        FillList();
+    }
 
+    private void FillList()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+           var a = transform.GetChild(i).GetComponent<CellBehaviour>();
+           cellList.Add(a);
+        }
+    }
+
+    public bool IsComplete() 
+    {
+        for ( int i = 0; i < cellList.Count; ++i ) 
+        {
+            if ( cellList[i].isOccupied == false ) {
+                return false;
+            }
+        }
+
+        Debug.Log("COMPLETO!!!!");
+        return true;    
+    }
 }

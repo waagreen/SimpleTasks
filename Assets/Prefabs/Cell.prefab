@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741c395bbc26f304981a7f36777bd1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkNum: 0
   isOccupied: 0
 --- !u!61 &6151426223694450927
 BoxCollider2D:
@@ -77,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 50}
+  m_Size: {x: 57, y: 57}
   m_EdgeRadius: 0
 --- !u!222 &2790608122885286190
 CanvasRenderer:
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0.5019608}
+  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0.6509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
