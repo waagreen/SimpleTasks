@@ -39,7 +39,6 @@ public class InputHandler : MonoBehaviour
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
-        baseMove.KeyboardMouse.DebugButton.started += DebugButton;
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -75,8 +74,8 @@ public class InputHandler : MonoBehaviour
         context.ReadValueAsButton();
 
         if (Core.Data.second == 3) Core.Data.isHolding = false;
-        else if(Physics.Raycast(Core.Data.ray, out hit, 1.5f * Core.Data.contactDistance) && hit.transform.tag == "PickUp") Core.Data.isHolding = true;
-        else if(Physics.Raycast(Core.Data.ray, out hit, 1.5f * Core.Data.contactDistance) && hit.transform.tag == "Interactible") Action(hit.transform.name);
+        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "PickUp") Core.Data.isHolding = true;
+        else if(Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.tag == "Interactible") Action(hit.transform.name);
     }
     public void PullComfortObject(InputAction.CallbackContext context)
     {
@@ -121,7 +120,6 @@ public class InputHandler : MonoBehaviour
     
     private void OnDisable()
     {
-        baseMove.KeyboardMouse.DebugButton.started -= DebugButton;
         baseMove.KeyboardMouse.ComfortObject.started -= PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started -= Interaction;
         OnInteract.RemoveAllListeners();
