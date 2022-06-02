@@ -21,7 +21,10 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu){
-            if(!isPaused)  PauseGame();
+            if(!isPaused)  
+                PauseGame();
+                LoadValues();
+
 
         }
     }

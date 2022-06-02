@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 265.28522, g: 517.69824, b: 538.1172, a: 1}
+  m_IndirectSpecularColor: {r: 264.9156, g: 517.177, b: 538.4861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10967,6 +10967,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1073270995}
     - target: {fileID: 7131975563996538956, guid: f20c6cbcb132d1b4c84aeaf9f8092f7e, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 1825193363}
+    - target: {fileID: 7131975563996538956, guid: f20c6cbcb132d1b4c84aeaf9f8092f7e, type: 3}
       propertyPath: optionsScreen
       value: 
       objectReference: {fileID: 710783245}
@@ -21802,6 +21806,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1825193363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2461342685234536684, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+  m_PrefabInstance: {fileID: 923187415208024737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1848602295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26564,6 +26579,22 @@ PrefabInstance:
     - target: {fileID: 923187416927592879, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -691.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079655347826100943, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1073270996}
+    - target: {fileID: 2079655347826100943, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveVolumeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079655347826100943, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079655347826100943, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57161b1c41e684f428ff5d023060379d, type: 3}
