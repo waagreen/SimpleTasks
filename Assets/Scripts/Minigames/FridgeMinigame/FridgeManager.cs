@@ -25,4 +25,6 @@ public class FridgeManager : InteractibleObject
             Core.Data.isInteracting = true;
         }
     }
+
+    private void OnDestroy() =>  Core.Binds?.OnInteract.RemoveListener((id) => StartMiniGame(id));
 }

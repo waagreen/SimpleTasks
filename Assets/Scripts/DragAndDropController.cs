@@ -51,24 +51,24 @@ public class DragAndDropController : MonoBehaviour, IDragHandler, IBeginDragHand
     private void OnTriggerStay2D(Collider2D other)
     {
         CellBehaviour piece = other.GetComponent<CellBehaviour>();
+        var oldColor = Color.black;
 
         if(piece != null)
         {
             if (!isBeingDragged) 
             {
                 piece.isOccupied = true;
-                if(piece.isOccupied)
+                if(!piece.isOccupied)
                 {
-                    piece.border.color = new Color(0f, 0f, 40f);
+                    oldColor = piece.border.color;
                 }
+                else piece.border.color = Color.grey;
             }
             else if(other.attachedRigidbody == null && !isBeingDragged) 
             {
                 piece.isOccupied = false;
-                piece.border.color = Color.black;
             }
         }
     }
 
-    
 }

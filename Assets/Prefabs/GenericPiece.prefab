@@ -115,19 +115,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3415740994525132050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GenericPieceBehaviour, Assembly-CSharp
-        m_MethodName: OnHold
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &1400785125620982156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -179,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e32f0ca5fc561f4f873bb825e9ea831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  src: {fileID: 0}
   dampSpeed: 0.01
 --- !u!225 &3377851743498231373
 CanvasGroup:

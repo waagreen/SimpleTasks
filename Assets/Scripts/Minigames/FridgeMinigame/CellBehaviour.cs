@@ -35,6 +35,7 @@ public class CellBehaviour : MonoBehaviour, IDropHandler
             i.transform.position = i.transform.parent.position;
         }
 
+        transform.parent.GetComponent<AudioSource>().Play();
         await Task.Delay(100);
         transform.parent.GetComponent<GenericGrid>().IsComplete();
     }
