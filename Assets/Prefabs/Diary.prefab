@@ -11,13 +11,15 @@ GameObject:
   - component: {fileID: 7722791893092804198}
   - component: {fileID: 8369646048353040798}
   - component: {fileID: 4661451129167014102}
+  - component: {fileID: 559619001078054563}
+  - component: {fileID: 2760525290118430935}
   m_Layer: 5
   m_Name: Diary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7722791893092804198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b74299df2b5b5f54db23e03eb2b23d8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +77,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &559619001078054563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638005849188311124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 0.6669922
+--- !u!114 &2760525290118430935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638005849188311124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381316e09845d5944be9f78236e558c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainPage: {fileID: 4661451129167014102}
+  pagesSprites:
+  - {fileID: 21300000, guid: bc2465bfe0ce5e049bd5466c34cb5c30, type: 3}
+  - {fileID: 21300000, guid: a0613dadbac32c046b8b5025914f6a8a, type: 3}
+  - {fileID: 21300000, guid: 7f644dab6209ded498c8b9f9488ee25f, type: 3}
+  alternateSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

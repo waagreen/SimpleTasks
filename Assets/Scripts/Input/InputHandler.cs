@@ -39,6 +39,7 @@ public class InputHandler : MonoBehaviour
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
+        baseMove.KeyboardMouse.Diary.started += OpenDiary;
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -109,10 +110,20 @@ public class InputHandler : MonoBehaviour
 
     private void Action(string id) => OnInteract.Invoke(id);
 
-    public void DebugButton(InputAction.CallbackContext context)
+    public void OpenDiary(InputAction.CallbackContext context)
     {
         context.ReadValueAsButton();
-        Instantiate(Core.UI.gridTest, Core.UI.barHolder);
+        
+        if(!Core.Data.isDiaryOpen) 
+        {
+            Core.Data.isDiaryOpen = true;
+            Core.UI.diary.gameObject.SetActive(true);
+        }
+        else if(Core.Data.isDiaryOpen)  
+        {
+            Core.Data.isDiaryOpen = false;
+            Core.UI.diary.gameObject.SetActive(false);
+        }
     }
 
 
@@ -122,6 +133,7 @@ public class InputHandler : MonoBehaviour
     {
         baseMove.KeyboardMouse.ComfortObject.started -= PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started -= Interaction;
+        baseMove.KeyboardMouse.Diary.started -= OpenDiary;
         OnInteract.RemoveAllListeners();
         baseMove.Disable();
     }

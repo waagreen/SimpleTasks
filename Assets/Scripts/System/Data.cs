@@ -28,5 +28,6 @@ public class Data : MonoBehaviour
     public bool isHolding = false;
     public bool isComforting = false;
     public bool isInteracting = false;
+    public bool isDiaryOpen = false;
     [HideInInspector] public GameObject selectedObject;    
 }
