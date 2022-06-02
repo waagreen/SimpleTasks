@@ -1,18 +1,25 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CellBehaviour : MonoBehaviour
+public class CellBehaviour : MonoBehaviour, IDropHandler
 {
-    [Range(0, 1)]public int checkNum;
+    public bool isOccupied = false;
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    public GameObject item
     {
-        Debug.Log("COLLIDING!!");
-        if(other.attachedRigidbody) 
-        {
-            checkNum = 1;
+        get {
+            if(transform.childCount > 0)
+            {
+                return transform.GetChild(0).gameObject;
+            }
+            return null;
         }
-        else checkNum = 0;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if(!item && !isOccupied) DragAndDropController.itemBeingDragged.transform.SetParent(transform);
     }
 }
