@@ -11,7 +11,7 @@ public class PlayerInteractingSubState : PlayerBaseState
         Core.Binds.baseMove.KeyboardMouse.Movement.Disable();
         Core.Binds.mLook.XYAxis = Core.Binds.mZero;
         
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
     public override void UpdateState()

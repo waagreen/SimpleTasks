@@ -7,59 +7,82 @@ public class SceneLoader : MonoBehaviour
 {   
     public Animator transition;
     public float transitionDuration;
+    [SerializeField] private bool isOnMenu;
 
     [Header("Menu Buttons")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
-    [SerializeField] GameObject optinons;
-    [SerializeField] GameObject pauseText;
     [SerializeField] GameObject optionsScreen;
     [SerializeField] AudioSource volume;
     [HideInInspector] public bool isPaused = false;
 
-    void Update()
+    /*void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P)){
+        if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu){
             if(!isPaused)  PauseGame();
-            
-        }
-    }
 
-    public void PauseGame(){
+        }
+    }*/
+
+    public void PauseGame()
+    {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f; //stop animations, updates 
-        Core.Binds.mLook.XYAxis = Core.Binds.mZero;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        
+        if(!isOnMenu)
+        {
+            Time.timeScale = 0f; //stop animations, updates 
+            Core.Binds.mLook.XYAxis = Core.Binds.mZero;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+
         isPaused = true;
     }
-    public void ResumeGame(){
+    public void ResumeGame()
+    {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
-        Cursor.visible = false;
+        
+        if(!isOnMenu)
+        {
+            Time.timeScale = 1f;
+            Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
+            Cursor.visible = false;
+        }
+
         isPaused = false;
     }
 
     public void SettingsGame(){
-        pauseText.SetActive(false);
         buttons.SetActive(false);
         optionsScreen.SetActive(true);
     }
 
-    public void BackToMenu(){
-        optionsScreen.SetActive(false);
-        pauseText.SetActive(true);
-        buttons.SetActive(true);
+    IEnumerator BackLevel() 
+    {
+        Time.timeScale = 1f;
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionDuration);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    public void CrossFade() => StartCoroutine(LoadLevel());
     IEnumerator LoadLevel() 
     {
+        Time.timeScale = 1f;
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionDuration);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    
+    public void Forward() => StartCoroutine(LoadLevel());
+    public void Backwards() => StartCoroutine(BackLevel());
+    public void QuitGame()
+    {   
+        Time.timeScale = 1f;
+        Application.Quit();
     }
 }

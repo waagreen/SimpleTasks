@@ -11,7 +11,7 @@ public class FridgeUI : MonoBehaviour
 
     private void Awake() 
     {
-        SetupMinigame();
+        container.gameObject.SetActive(true);
     }
 
     private void SetupMinigame()
