@@ -14,7 +14,9 @@ public class UiSystem : MonoBehaviour
     [SerializeField] public Transform barHolder;
     public StressBar stress;
     public PointBehaviour point;
+
     public UnityEvent OnMiniGameEnd = new UnityEvent();
+    public UnityEvent OnMiniGameStepEnd = new UnityEvent();
 
 
     private bool isStressed = false;

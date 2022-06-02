@@ -57,12 +57,15 @@ public class DragAndDropController : MonoBehaviour, IDragHandler, IBeginDragHand
             if (!isBeingDragged) 
             {
                 piece.isOccupied = true;
-                if(piece.isOccupied) piece.border.color = Color.black;
+                if(piece.isOccupied)
+                {
+                    piece.border.color = new Color(0f, 0f, 40f);
+                }
             }
             else if(other.attachedRigidbody == null && !isBeingDragged) 
             {
                 piece.isOccupied = false;
-                if(!piece.isOccupied && !isBeingDragged) piece.border.color = Color.black;
+                piece.border.color = Color.black;
             }
         }
     }

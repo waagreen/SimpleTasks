@@ -27,23 +27,21 @@ public class CellBehaviour : MonoBehaviour, IDropHandler
 
     public async void OnDrop(PointerEventData eventData)
     {
-        if(!item && !isOccupied && accept) {DragAndDropController.itemBeingDragged.transform.SetParent(transform);}
+        var i = DragAndDropController.itemBeingDragged;
+
+        if(!item && !isOccupied && accept) 
+        {
+            i.transform.SetParent(transform);
+            i.transform.position = i.transform.parent.position;
+        }
 
         await Task.Delay(100);
-        transform.parent.GetComponent<Grid>().IsComplete();
+        transform.parent.GetComponent<GenericGrid>().IsComplete();
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-
-        if(!item && !isOccupied)
-        { 
-            accept = true;
-            Debug.Log("AQUI2");
-        }
-
+        if(!item && !isOccupied) accept = true;
         else accept = false;
-    
-        Debug.Log("AQUI2");
     }
 }

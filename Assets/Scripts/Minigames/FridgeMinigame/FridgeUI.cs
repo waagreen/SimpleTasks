@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class FridgeUI : MonoBehaviour
 {   
-    public int gridNum;
-    public GameObject grid;
-    public RectTransform container;
-    public List<Vector2> coordinates;
+    public List<GenericGrid> gridList;
 
-    private void SetupMinigame()
+    private int completionNum = 0;
+
+    private void Awake() {
+       
+        Core.UI.OnMiniGameStepEnd.AddListener(CheckCompletion);
+    }
+
+    public void CheckCompletion()
     {
-        for(int i = 0; i < gridNum; i++)
+        completionNum++;
+
+        if(completionNum > gridList.Count)
         {
-            Instantiate(grid, container);
+            Core.UI.OnMiniGameEnd.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        Core.UI.OnMiniGameStepEnd.RemoveListener(CheckCompletion);
     }
 }

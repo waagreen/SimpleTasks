@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
-
-public class Grid : MonoBehaviour
+using UnityEngine.Events;
+public class GenericGrid : MonoBehaviour
 {
-    //Gameobject da c�lula da geladeira
-    public GameObject cellGrid;
-    public RectTransform container;
+    public RectTransform greyBlock;
     public bool isDone = false;
 
 
@@ -40,6 +38,10 @@ public class Grid : MonoBehaviour
         Debug.Log("COMPLETO!!!!");
        
         isDone = true;
+        greyBlock.gameObject.SetActive(true);
+        Core.UI.OnMiniGameStepEnd.Invoke();
+        
         return isDone;    
     }
 }
+
