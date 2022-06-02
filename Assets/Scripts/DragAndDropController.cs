@@ -14,7 +14,6 @@ public class DragAndDropController : MonoBehaviour, IDragHandler, IBeginDragHand
     private bool isBeingDragged = false;
 
     
-    CellBehaviour piece;
     CellBehaviour lastPiece;
 
     private Vector3 startPosition;
@@ -51,12 +50,22 @@ public class DragAndDropController : MonoBehaviour, IDragHandler, IBeginDragHand
     
     private void OnTriggerStay2D(Collider2D other)
     {
-        piece = other.GetComponent<CellBehaviour>();
-        
+        CellBehaviour piece = other.GetComponent<CellBehaviour>();
+
         if(piece != null)
         {
-            if (!isBeingDragged) piece.isOccupied = true;
-            else if(!other.attachedRigidbody) piece.isOccupied = false;
+            if (!isBeingDragged) 
+            {
+                piece.isOccupied = true;
+                if(piece.isOccupied) piece.border.color = Color.black;
+            }
+            else if(other.attachedRigidbody == null && !isBeingDragged) 
+            {
+                piece.isOccupied = false;
+                if(!piece.isOccupied && !isBeingDragged) piece.border.color = Color.black;
+            }
         }
     }
+
+    
 }

@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
+  border: {fileID: 4156971953699711330}
 --- !u!61 &6151426223694450927
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76,7 +77,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 57, y: 57}
+  m_Size: {x: 58, y: 58}
   m_EdgeRadius: 0
 --- !u!222 &2790608122885286190
 CanvasRenderer:

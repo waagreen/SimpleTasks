@@ -29,6 +29,7 @@ public class Grid : MonoBehaviour
 
     public bool IsComplete() 
     {
+        Debug.Log("GOT HERE!");
         for ( int i = 0; i < cellList.Count; ++i ) 
         {
             if ( cellList[i].isOccupied == false ) {
@@ -37,6 +38,8 @@ public class Grid : MonoBehaviour
         }
 
         Debug.Log("COMPLETO!!!!");
-        return true;    
+       
+        isDone = true;
+        return isDone;    
     }
 }
