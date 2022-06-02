@@ -89,6 +89,15 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Diary"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d2432fd-86b6-430d-a118-bb19e0a09c17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -234,6 +243,17 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                     ""action"": ""DebugButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78b14535-90d8-4a1a-baa9-83655e1a3f08"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -249,6 +269,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         m_KeyboardMouse_PickUp = m_KeyboardMouse.FindAction("PickUp", throwIfNotFound: true);
         m_KeyboardMouse_None = m_KeyboardMouse.FindAction("None", throwIfNotFound: true);
         m_KeyboardMouse_DebugButton = m_KeyboardMouse.FindAction("DebugButton", throwIfNotFound: true);
+        m_KeyboardMouse_Diary = m_KeyboardMouse.FindAction("Diary", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardMouse_PickUp;
     private readonly InputAction m_KeyboardMouse_None;
     private readonly InputAction m_KeyboardMouse_DebugButton;
+    private readonly InputAction m_KeyboardMouse_Diary;
     public struct KeyboardMouseActions
     {
         private @BaseMovement m_Wrapper;
@@ -326,6 +348,7 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         public InputAction @PickUp => m_Wrapper.m_KeyboardMouse_PickUp;
         public InputAction @None => m_Wrapper.m_KeyboardMouse_None;
         public InputAction @DebugButton => m_Wrapper.m_KeyboardMouse_DebugButton;
+        public InputAction @Diary => m_Wrapper.m_KeyboardMouse_Diary;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -356,6 +379,9 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                 @DebugButton.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
                 @DebugButton.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
                 @DebugButton.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDebugButton;
+                @Diary.started -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDiary;
+                @Diary.performed -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDiary;
+                @Diary.canceled -= m_Wrapper.m_KeyboardMouseActionsCallbackInterface.OnDiary;
             }
             m_Wrapper.m_KeyboardMouseActionsCallbackInterface = instance;
             if (instance != null)
@@ -381,6 +407,9 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
                 @DebugButton.started += instance.OnDebugButton;
                 @DebugButton.performed += instance.OnDebugButton;
                 @DebugButton.canceled += instance.OnDebugButton;
+                @Diary.started += instance.OnDiary;
+                @Diary.performed += instance.OnDiary;
+                @Diary.canceled += instance.OnDiary;
             }
         }
     }
@@ -394,5 +423,6 @@ public partial class @BaseMovement : IInputActionCollection2, IDisposable
         void OnPickUp(InputAction.CallbackContext context);
         void OnNone(InputAction.CallbackContext context);
         void OnDebugButton(InputAction.CallbackContext context);
+        void OnDiary(InputAction.CallbackContext context);
     }
 }
