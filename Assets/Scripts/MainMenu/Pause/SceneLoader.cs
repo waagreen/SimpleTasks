@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {   
@@ -13,13 +15,16 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optionsScreen;
-    [SerializeField] AudioSource volume;
+    [SerializeField] Slider volumeSlider = null;
     [HideInInspector] public bool isPaused = false;
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu){
-            if(!isPaused)  PauseGame();
+            if(!isPaused)  
+                PauseGame();
+                LoadValues();
+
 
         }
     }
@@ -84,5 +89,17 @@ public class SceneLoader : MonoBehaviour
     {   
         Time.timeScale = 1f;
         Application.Quit();
+    }
+
+    public void SaveVolumeButton(){
+        float volumeValue = volumeSlider.value;
+        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
+        LoadValues();
+    }
+
+    void LoadValues(){
+        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
+        volumeSlider.value = volumeValue;
+        AudioListener.volume = volumeValue;
     }
 }
