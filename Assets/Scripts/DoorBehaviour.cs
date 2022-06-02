@@ -9,6 +9,8 @@ public class DoorBehaviour : InteractibleObject
     public Transform door;
     public Transform endP;
     public Transform startP;
+    public AudioSource doorAudio;
+    public AudioClip doorOpenClip;
 
     public override string id => this.name;
     public bool isOpen;
@@ -21,12 +23,15 @@ public class DoorBehaviour : InteractibleObject
     }
     public void OpenDoor(Transform t, string id)
     {
+
         if(id == this.id && !isOpen)
         {
             var tween = DOTween.Sequence();
 
             tween.Append(t.DOLocalRotateQuaternion(endP.rotation, .7f).SetEase(Ease.OutCubic)).OnComplete(() => ChangeState(true));
             tween.Play();
+
+            doorAudio.PlayOneShot(doorOpenClip);
         }
     }
     public void CloseDoor(Transform t, string id)
