@@ -16,13 +16,13 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] AudioSource volume;
     [HideInInspector] public bool isPaused = false;
 
-    /*void Update()
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu){
             if(!isPaused)  PauseGame();
 
         }
-    }*/
+    }
 
     public void PauseGame()
     {
