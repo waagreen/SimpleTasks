@@ -82,9 +82,20 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    
+    IEnumerator LoadCredits()
+    {
+        Time.timeScale = 1f;
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionDuration);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+
     public void Forward() => StartCoroutine(LoadLevel());
     public void Backwards() => StartCoroutine(BackLevel());
+    public void Credits() => StartCoroutine(LoadCredits());
+    
     public void QuitGame()
     {   
         Time.timeScale = 1f;

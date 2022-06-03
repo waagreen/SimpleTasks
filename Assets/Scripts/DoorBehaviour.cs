@@ -13,6 +13,7 @@ public class DoorBehaviour : InteractibleObject
     public AudioClip doorOpenClip;
 
     public override string id => this.name;
+
     public override bool isKeyItem => false;
 
     public bool isOpen;
@@ -20,21 +21,18 @@ public class DoorBehaviour : InteractibleObject
     
     private void Awake()
     {
-        Core.Binds.OnInteract.AddListener((id) => OpenDoor(door, id));
-        Core.Binds.OnInteract.AddListener((id) => CloseDoor(door, id));
+        Core.UI.OnMiniGameEnd.AddListener( () => OpenDoor(door));
+        //Core.Binds.OnInteract.AddListener((id) => CloseDoor(door, id));
     }
-    public void OpenDoor(Transform t, string id)
+    public void OpenDoor(Transform t)
     {
-
-        if(id == this.id && !isOpen)
-        {
             var tween = DOTween.Sequence();
 
             tween.Append(t.DOLocalRotateQuaternion(endP.rotation, .7f).SetEase(Ease.OutCubic)).OnComplete(() => ChangeState(true));
             tween.Play();
 
             doorAudio.PlayOneShot(doorOpenClip);
-        }
+        
     }
     public void CloseDoor(Transform t, string id)
     {
