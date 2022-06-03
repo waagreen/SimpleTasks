@@ -5,6 +5,7 @@ using UnityEngine;
 public class FridgeManager : InteractibleObject
 {
     public override string id => this.name;
+    public override bool isKeyItem => false;
 
     public GameObject fridgeUI;
     public RectTransform holder;

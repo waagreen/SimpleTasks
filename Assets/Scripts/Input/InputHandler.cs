@@ -34,8 +34,8 @@ public class InputHandler : MonoBehaviour
 
         baseMove = new BaseMovement();
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
@@ -104,8 +104,8 @@ public class InputHandler : MonoBehaviour
         //Debug.Log($"You dropped a {selectedObject.transform.name}");
         selectedObject.transform.SetParent(null);
         toggleRigidBody(true, pickedRb);
-        pickedRb.AddForce(playerHands.transform.forward * 5f, ForceMode.Impulse);
-        pickedRb.drag = 0.5f;
+        pickedRb.AddForce(playerHands.transform.forward * 7f, ForceMode.Impulse);
+        pickedRb.drag = 0.2f;
     }
 
     private void Action(string id) => OnInteract.Invoke(id);
@@ -114,15 +114,27 @@ public class InputHandler : MonoBehaviour
     {
         context.ReadValueAsButton();
 
-        if(!Core.Data.isDiaryOpen) 
+        if(!Core.Data.isDiaryOpen && Core.Data.hasDiary) 
         {
             Core.Data.isDiaryOpen = true;
             Core.UI.diary.gameObject.SetActive(true);
+            
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            Core.Binds.baseMove.KeyboardMouse.Movement.Disable();
+            Core.Binds.mLook.XYAxis = Core.Binds.mZero;
         }
-        else if(Core.Data.isDiaryOpen)  
+        else if(Core.Data.isDiaryOpen && Core.Data.hasDiary)  
         {
             Core.Data.isDiaryOpen = false;
             Core.UI.diary.gameObject.SetActive(false);
+
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
+            Core.Binds.baseMove.KeyboardMouse.Movement.Enable();
+            Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
         }
     }
 

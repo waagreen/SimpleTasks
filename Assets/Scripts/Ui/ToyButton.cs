@@ -15,6 +15,7 @@ public class ToyButton : MonoBehaviour
     private Toy toy;
 
     private Vector3 lastPos;
+    public ToyPickerUI picker;
 
     public void ToySetup(Toy toy)
     {
@@ -62,4 +63,13 @@ public class ToyButton : MonoBehaviour
     }
 
     private void KillTween(Sequence anim) => anim?.Kill();
+
+    
+
+    public void Choose()
+    {
+        if(picker != null) {Destroy(picker.gameObject);
+        
+        Core.Data.isInteracting = false;}
+    }
 }

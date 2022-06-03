@@ -361,7 +361,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6220873784014058958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3208520793939482955}
+        m_TargetAssemblyTypeName: ToyButton, Assembly-CSharp
+        m_MethodName: Choose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-7268183673107822609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +434,7 @@ MonoBehaviour:
   nick: {fileID: 1198332954402333959}
   gif: {fileID: 7501927233431943227}
   t: {fileID: 2187292452534052071}
+  picker: {fileID: 0}
 --- !u!1 &7841285741472329128
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class DoorBehaviour : InteractibleObject
     public AudioClip doorOpenClip;
 
     public override string id => this.name;
+    public override bool isKeyItem => false;
+
     public bool isOpen;
 
     

@@ -9,6 +9,9 @@ public class SwitchBehaviour : InteractibleObject
 
     
     public override string id => this.name;
+
+    public override bool isKeyItem => false;
+
     public bool isOn;
 
     
