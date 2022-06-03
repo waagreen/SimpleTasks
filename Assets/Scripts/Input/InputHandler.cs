@@ -115,7 +115,8 @@ public class InputHandler : MonoBehaviour
         context.ReadValueAsButton();
 
         if(!Core.Data.isDiaryOpen && Core.Data.hasDiary) 
-        {
+        {   
+            Debug.Log("GET HERE");
             Core.Data.isDiaryOpen = true;
             Core.UI.diary.gameObject.SetActive(true);
             
@@ -126,6 +127,7 @@ public class InputHandler : MonoBehaviour
         }
         else if(Core.Data.isDiaryOpen && Core.Data.hasDiary)  
         {
+            Debug.Log("GET HERE2");
             Core.Data.isDiaryOpen = false;
             Core.UI.diary.gameObject.SetActive(false);
 
