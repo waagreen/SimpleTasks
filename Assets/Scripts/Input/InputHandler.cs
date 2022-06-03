@@ -34,8 +34,8 @@ public class InputHandler : MonoBehaviour
 
         baseMove = new BaseMovement();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         baseMove.KeyboardMouse.ComfortObject.started += PullComfortObject;
         baseMove.KeyboardMouse.PickUp.started += Interaction;
@@ -113,7 +113,7 @@ public class InputHandler : MonoBehaviour
     public void OpenDiary(InputAction.CallbackContext context)
     {
         context.ReadValueAsButton();
-        
+
         if(!Core.Data.isDiaryOpen) 
         {
             Core.Data.isDiaryOpen = true;
