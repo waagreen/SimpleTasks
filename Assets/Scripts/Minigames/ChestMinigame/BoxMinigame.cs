@@ -7,6 +7,8 @@ using DG.Tweening;
 public class BoxMinigame : InteractibleObject
 {
     public override string id => this.name;
+    public override bool isKeyItem => false;
+
     public ToyPickerUI hud;
     public Transform container;
     
@@ -77,5 +79,8 @@ public class BoxMinigame : InteractibleObject
     private void ChangeState(bool state) => isOpen = state;
     private void SpawnHud() => Instantiate(hud, container);
     private void FadeToy(float timeToFade, Material material) => material.DOFade(0f, timeToFade).SetEase(Ease.OutQuint).OnComplete(OnAnimDone.Invoke);
-    private void Tdestroy(GameObject obj) => Destroy(obj);
+    private void Tdestroy(GameObject obj)
+    {
+        Destroy(obj);
+    }
 }

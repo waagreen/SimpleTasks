@@ -19,5 +19,6 @@ public class ToyPickerUI : MonoBehaviour
     {
         var tab = Instantiate(button, container.transform) as ToyButton;
         tab.ToySetup(toy);
+        tab.picker = this;
     }
 }
