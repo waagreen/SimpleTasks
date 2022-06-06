@@ -24,6 +24,7 @@ public class SceneLoader : MonoBehaviour
             if(!isPaused)  
                 PauseGame();
                 LoadValues();
+                
 
 
         }
