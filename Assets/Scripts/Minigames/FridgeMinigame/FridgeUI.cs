@@ -37,8 +37,8 @@ public class FridgeUI : MonoBehaviour
     {
         Destroy(this.gameObject);
         Core.Data.isInteracting = false;
-        Core.UI.OnMiniGameStepEnd.AddListener(CheckCompletion);
-        
+        this.gameObject.SetActive(false);
+        FridgeManager.doing = false;
     }
 
 }

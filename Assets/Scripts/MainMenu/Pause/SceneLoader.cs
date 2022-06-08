@@ -15,18 +15,15 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optionsScreen;
-    [SerializeField] Slider volumeSlider = null;
     [HideInInspector] public bool isPaused = false;
-
+    
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu && Core.Data.canPause){
             if(!isPaused)  
+            {
                 PauseGame();
-                LoadValues();
-                
-
-
+            }   
         }
     }
 
@@ -101,17 +98,5 @@ public class SceneLoader : MonoBehaviour
     {   
         Time.timeScale = 1f;
         Application.Quit();
-    }
-
-    public void SaveVolumeButton(){
-        float volumeValue = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
-        LoadValues();
-    }
-
-    void LoadValues(){
-        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-        volumeSlider.value = volumeValue;
-        AudioListener.volume = volumeValue;
     }
 }
