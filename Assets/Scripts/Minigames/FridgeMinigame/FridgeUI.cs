@@ -29,10 +29,16 @@ public class FridgeUI : MonoBehaviour
     {
         Destroy(this.gameObject);
         Core.Data.isInteracting = false;
-    }
-
-    private void OnDestroy()
-    {
         OnFridgeOrganized.RemoveListener(CheckCompletion);
     }
+
+    
+    public void ResetFridge()
+    {
+        Destroy(this.gameObject);
+        Core.Data.isInteracting = false;
+        Core.UI.OnMiniGameStepEnd.AddListener(CheckCompletion);
+        
+    }
+
 }
