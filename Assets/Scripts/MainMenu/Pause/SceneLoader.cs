@@ -16,10 +16,11 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optionsScreen;
     [HideInInspector] public bool isPaused = false;
-    
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu && Core.Data.canPause){
+        if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu && Core.Data.canPause)
+        {
             if(!isPaused)  
             {
                 PauseGame();

@@ -63,7 +63,7 @@ public class InputHandler : MonoBehaviour
                 currentTarget.layer = LayerMask.NameToLayer("Highlight");
             }
         }
-        else if (Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.name == "Diário de Lo")
+        else if (Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.name == "Diï¿½rio de Lo")
         {
             var target = hit.transform.gameObject;
             if (currentTarget != target)
@@ -129,27 +129,19 @@ public class InputHandler : MonoBehaviour
 
         if(!Core.Data.isDiaryOpen && Core.Data.hasDiary) 
         {   
-            Debug.Log("GET HERE");
             Core.Data.isDiaryOpen = true;
-            Core.UI.diary.gameObject.SetActive(true);
+            Core.Data.isInteracting = true;
             
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            Core.Binds.baseMove.KeyboardMouse.Movement.Disable();
-            Core.Binds.mLook.XYAxis = Core.Binds.mZero;
+            Core.UI.diary.gameObject.SetActive(true);
+            Core.UI.diaryIcon.gameObject.SetActive(false);
         }
         else if(Core.Data.isDiaryOpen && Core.Data.hasDiary)  
         {
-            Debug.Log("GET HERE2");
             Core.Data.isDiaryOpen = false;
+            Core.Data.isInteracting = false;
+            
             Core.UI.diary.gameObject.SetActive(false);
-
-            
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            
-            Core.Binds.baseMove.KeyboardMouse.Movement.Enable();
-            Core.Binds.mLook.XYAxis = Core.Binds.mFollow;
+            Core.UI.diaryIcon.gameObject.SetActive(true);
         }
     }
 
