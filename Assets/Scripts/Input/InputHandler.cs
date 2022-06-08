@@ -63,7 +63,20 @@ public class InputHandler : MonoBehaviour
                 currentTarget.layer = LayerMask.NameToLayer("Highlight");
             }
         }
-        else if(currentTarget != null)
+        else if (Physics.Raycast(Core.Data.ray, out hit, Core.Data.contactDistance) && hit.transform.name == "Diário de Lo")
+        {
+            var target = hit.transform.gameObject;
+            if (currentTarget != target)
+            {
+                objName.gameObject.SetActive(true);
+                objName.SetText(hit.transform.gameObject.name);
+                currentTarget = target;
+                currentTarget.layer = LayerMask.NameToLayer("Highlight");
+            }
+        }
+
+
+        else if (currentTarget != null)
         { 
             objName.gameObject.SetActive(false);
             currentTarget.layer = LayerMask.NameToLayer("Default");
