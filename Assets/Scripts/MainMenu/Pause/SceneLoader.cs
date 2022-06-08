@@ -30,7 +30,7 @@ public class SceneLoader : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        pauseMenu?.SetActive(true);
         
         if(!isOnMenu)
         {
@@ -44,7 +44,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu?.SetActive(false);
         
         if(!isOnMenu)
         {
@@ -57,7 +57,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void SettingsGame(){
-        buttons.SetActive(false);
+        buttons?.SetActive(false);
         optionsScreen.SetActive(true);
     }
 
@@ -88,12 +88,11 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionDuration);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void Forward() => StartCoroutine(LoadLevel());
     public void Backwards() => StartCoroutine(BackLevel());
-    public void Credits() => StartCoroutine(LoadCredits());
+    public void Credits() => SceneManager.LoadScene(2);
     
     public void QuitGame()
     {   
