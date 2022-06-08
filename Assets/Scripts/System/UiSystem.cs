@@ -8,7 +8,7 @@ using TMPro;
 public class UiSystem : MonoBehaviour
 {
     public GameObject diary;
-    public Canvas mainCanvas;
+    public GameObject diaryIcon;
     
     [HideInInspector] public StressBar activeBar;
     [HideInInspector] public List<GameObject> points = new List<GameObject>();

@@ -20,6 +20,7 @@ public class DiaryObject : InteractibleObject
         if(id == this.id && isKeyItem)
         {
             Core.Data.hasDiary = true;
+            Core.UI.diaryIcon.SetActive(true);
             Destroy(this.gameObject);
         }
     }

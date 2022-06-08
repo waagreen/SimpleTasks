@@ -10,7 +10,7 @@ public class FridgeManager : InteractibleObject
     public GameObject fridgeUI;
     public RectTransform holder;
 
-    private bool doing = false;
+    public static bool doing = false;
 
     private void Awake()
     {

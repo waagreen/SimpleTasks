@@ -15,24 +15,22 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject optionsScreen;
-    [SerializeField] Slider volumeSlider = null;
     [HideInInspector] public bool isPaused = false;
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu && Core.Data.canPause){
+        if(Input.GetKeyDown(KeyCode.Escape) && !isOnMenu && Core.Data.canPause)
+        {
             if(!isPaused)  
+            {
                 PauseGame();
-                LoadValues();
-                
-
-
+            }   
         }
     }
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        pauseMenu?.SetActive(true);
         
         if(!isOnMenu)
         {
@@ -46,7 +44,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu?.SetActive(false);
         
         if(!isOnMenu)
         {
@@ -59,7 +57,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void SettingsGame(){
-        buttons.SetActive(false);
+        buttons?.SetActive(false);
         optionsScreen.SetActive(true);
     }
 
@@ -90,28 +88,15 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionDuration);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void Forward() => StartCoroutine(LoadLevel());
     public void Backwards() => StartCoroutine(BackLevel());
-    public void Credits() => StartCoroutine(LoadCredits());
+    public void Credits() => SceneManager.LoadScene(2);
     
     public void QuitGame()
     {   
         Time.timeScale = 1f;
         Application.Quit();
-    }
-
-    public void SaveVolumeButton(){
-        float volumeValue = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
-        LoadValues();
-    }
-
-    void LoadValues(){
-        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-        volumeSlider.value = volumeValue;
-        AudioListener.volume = volumeValue;
     }
 }
