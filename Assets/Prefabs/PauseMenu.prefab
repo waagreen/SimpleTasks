@@ -165,7 +165,6 @@ RectTransform:
   m_Children:
   - {fileID: 2843781037658981288}
   - {fileID: 6593827729944769750}
-  - {fileID: 3287063273488057931}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1085,6 +1084,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 923187415898625244}
+  - {fileID: 8083843339952657856}
   m_Father: {fileID: 6593827729944769750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1393,12 +1393,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1001 &923187415647546285
+--- !u!1001 &5872051805902108710
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 923187415736443675}
+    m_TransformParent: {fileID: 923187416927592879}
     m_Modifications:
     - target: {fileID: 785548874305887980, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
       propertyPath: m_Name
@@ -1407,38 +1407,6 @@ PrefabInstance:
     - target: {fileID: 785548874305887980, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2097678423452267350}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248354771612418028, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2401030692222103014, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
       propertyPath: m_Pivot.x
@@ -1450,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401030692222103014, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2401030692222103014, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1534,8 +1502,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
---- !u!224 &3287063273488057931 stripped
+--- !u!224 &8083843339952657856 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2401030692222103014, guid: dc54489bba1df0542b80e5152ad88062, type: 3}
-  m_PrefabInstance: {fileID: 923187415647546285}
+  m_PrefabInstance: {fileID: 5872051805902108710}
   m_PrefabAsset: {fileID: 0}
