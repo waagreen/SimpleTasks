@@ -915,7 +915,6 @@ GameObject:
   - component: {fileID: 283162117}
   - component: {fileID: 283162116}
   - component: {fileID: 283162119}
-  - component: {fileID: 283162120}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1011,21 +1010,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.060646895, g: 0.035377353, b: 0.14150941, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
---- !u!114 &283162120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283162114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 992e6de1284e67d408aba08e225250c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 283162115}
-  firstRotation: {fileID: 630738171}
-  secondRotation: {fileID: 1134348430}
 --- !u!1 &313560441
 GameObject:
   m_ObjectHideFlags: 0

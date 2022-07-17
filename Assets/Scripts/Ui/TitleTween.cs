@@ -22,7 +22,7 @@ public class TitleTween : MonoBehaviour
         var startPos = this.transform.rotation;
 
         tween.Append(t.DORotateQuaternion(firstRotation.rotation, 0.7f)).SetEase(Ease.OutBounce);
-        tween.Append(t.DORotateQuaternion(secondRotation.rotation, 1f)).SetEase(Ease.OutBounce);
+
         tween.Append(t.DORotateQuaternion(startPos, 0.3f)).SetEase(Ease.InCirc);
         tween.Play();
     }
